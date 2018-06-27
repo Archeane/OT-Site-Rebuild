@@ -1,0 +1,85 @@
+/* nav bar */
+nav ul a,
+nav .brand-logo {
+    color: #444;
+}
+nav img{
+    height:120%;
+    width:120%;
+    margin:0 auto;
+}
+nav{
+  height: 7em;
+  position:relative;
+}
+nav div{
+    position:absolute;
+    top: 1.1em;
+}
+nav span{
+  font-size: 1.2em;
+  line-height: 1.68;
+  letter-spacing: 0.1em;;
+  -webkit-font-smoothing: antialiased;
+}
+nav p {
+  line-height: 2rem;
+}
+nav .button-collapse {
+  color: #26a69a;
+}
+
+/*PARALLAX*/
+.parallax-container {
+  min-height: 450px;
+  line-height: 0;
+  height: auto;
+  color: rgba(255,255,255,.9);
+}
+.parallax-container .container h1{
+  font-weight: bold;
+  font-size: 3em;
+  vertical-align: middle;
+}
+.parallax-container .section {
+  width: 100%;
+}
+
+/*category texts*/
+.category {
+    font-size: 1.5em;
+    line-height: 1.68;
+    letter-spacing: 0.1em;
+    color: #808080;
+    -webkit-font-smoothing: antialiased;
+    margin-top:10px;
+}
+
+#pitch {
+    font-weight: 700;
+    font-size: 3em;
+}
+
+
+/*ghost button*/
+.ghost-button-rounded-corners {
+    display: inline-block;
+    width: 15em;
+    color: #fff;
+    border: 1px solid #fff;
+    border-radius: 2em;
+    text-align: center;
+    outline: none;
+    text-decoration: none;
+    transition: background-color 0.2s ease-out, color 0.2s ease-out;
+}
+
+.ghost-button-rounded-corners:hover,
+.ghost-button-rounded-corners:active {
+    background-color: #fff;
+    color: #000;
+    opacity: 0.8;
+    transition: background-color 0.3s ease-in, color 0.3s ease-in;
+}
+
+

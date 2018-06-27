@@ -1,0 +1,35 @@
+ul(id='brotherdropdown' class='dropdown-content')
+    li
+        a(href='/brothers?who=all' class='blue-text') All
+    li(class='template' style="display: none")
+        a(href="/brothers?who=class" class="blue-text light") text
+nav(class='bg-dark text-white' role='navigation')
+    div(class='nav-wrapper container')
+        a(class='brand-logo' href='/' id='logo-container')
+            img(src='media/general/crest_small.png' vspace='15')
+        ul(class='right hide-on-med-and-down')
+            li
+                a(href="/" class="white-text text-lighten-2") 
+                    span HOME
+            li
+                a(href='/rush' class="white-text text-lighten-2") 
+                    span RUSH
+            li
+                a(class="dropdown-button white-text text-lighten-2" href="#" data-activates="brotherdropdown")
+                    span BROTHERS
+                    i(class="material-icons right") arrow_drop_down
+        ul(class="side-nav" id="nav-mobile" style="left: -250px;")
+            li.active
+                a(href="/" class="white-text text-lighten-2") 
+                    span HOME
+            li
+                a(href="/rush" class="white-text light") 
+                    span RUSH
+            li
+                a(href="/brothers?who=all" class="white-text light")
+        a(class="button-collapse white-text" data-activates="nav-mobile" href="#")
+            i(class="material-icons") menu
+        
+                    
+                
+        

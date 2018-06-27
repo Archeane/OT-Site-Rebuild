@@ -1,0 +1,13 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\bin",
+    "\\controllers",
+    "\\public",
+    "\\public\\css",
+    "\\public\\js",
+    "\\views"
+  ],
+  "SelectedNode": "\\views\\layout.pug",
+  "PreviewInSolutionExplorer": false
+}
