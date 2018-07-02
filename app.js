@@ -8,6 +8,7 @@ const errorHandler = require('errorhandler');
 //CONTROLLERS (ROUTE HANDLERS)
 const homeController = require('./controllers/home');
 const spotlightController = require('./controllers/spotlight');
+const navbarController = require('./controllers/navbar');
 
 
 const app = express();
@@ -28,6 +29,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //APP ROUTES
 app.get('/', homeController.index);
+app.get('/about', navbarController.getZetaEpsilon);
+app.get('/about/greeklife', navbarController.getGreeklife);
+app.get('/about/thetatau', navbarController.getThetaTau)
 
 /**
  * Error Handler.
