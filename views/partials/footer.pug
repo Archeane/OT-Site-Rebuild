@@ -1,14 +1,42 @@
-div(class='bg-dark text-light')
+.footer
 	.row
-		div(class='two columns')
-			<h6 class="h7 decorated-2 white mb3">Contact</h6>
-		div(class='ten columns')
+		.col-md-1
+		.col-md-4
+			h5 <i class="fa fa-road"></i> Stony Brook Theta Tau 
 			.row
-				div(class='three columns')
-					p(class="grey lh2") Jordan Fuller <br> Regent<br> <a href="mailto:jlf323@cornell.edu">jlf@cornell.edu</a></p>
-				div(class='three columns')
-					<p class="grey lh2">Jordan Fuller<br>Regent<br><a href="mailto:jlf323@cornell.edu">jlf323@cornell.edu</a></p>
-				div(class='three columns')
-					<p class="grey lh2">Jordan Fuller<br>Regent<br><a href="mailto:jlf323@cornell.edu">jlf323@cornell.edu</a></p>
-				div(class='three columns')
-					<p class="grey lh2">Jordan Fuller<br>Regent<br><a href="mailto:jlf323@cornell.edu">jlf323@cornell.edu</a></p>
+				.col-md-6
+					ul(class='list-unstyled')
+						li
+							a(href='/') Home
+						li
+							a(href='') About
+						li
+							a(href='') Events
+				.col-md-6
+					ul(class='list-unstyled')
+						li
+							a(href='') Spotlight
+						li
+							a(href='') Rush
+						li
+							a(href='') Brothers
+			.row
+				.col-md-3
+					<a href="https://www.facebook.com/ThetaTauSBU/"><img src="/media/general/facebook.png" height='50' width='50'></a>
+				.col-md-3
+					<a href="https://www.instagram.com/stonythetatau/"><img src="/media/general/instagram.png" height='50' width='50'></a>
+				.col-md-3
+					<a href="mailto:thetatau.SBU@gmail.com"><img src="/media/general/gmail.png" height='50' width='50'></a>      	                               
+				br             
+		.col-md-2
+			h5.text-md-right Contact Us
+			hr
+		.col-md-4
+			form
+				fieldset.form-group
+					input#exampleInputEmail1.form-control(type="email", placeholder="Enter email")
+				fieldset.form-group
+					textarea#exampleMessage.form-control(placeholder="Message")             
+				fieldset.form-group.text-xs-right
+					button.btn.btn-secondary-outline.btn-lg(type="button") Send
+		.col-md-1

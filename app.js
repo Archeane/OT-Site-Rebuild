@@ -32,7 +32,7 @@ app.get('/', homeController.index);
 app.get('/about', navbarController.getZetaEpsilon);
 app.get('/about/greeklife', navbarController.getGreeklife);
 app.get('/about/thetatau', navbarController.getThetaTau)
-
+app.get('/events/brotherhood', navbarController.getBrotherhood);
 /**
  * Error Handler.
  */
