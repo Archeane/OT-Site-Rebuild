@@ -11,20 +11,28 @@ nav(class='bg-dark text-white' role='navigation')
 			li
 				a(href="/" class="white-text text-lighten-2") 
 					span HOME
-			li
-				<div class="dropdown show">
-					<a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-					Dropdown link
-					</a>
-					<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-						<a class="dropdown-item" href="#">Action</a>
-						<a class="dropdown-item" href="#">Another action</a>
-						<a class="dropdown-item" href="#">Something else here</a>
-					</div>
-				</div>
-			li
+			li(class='dropdown' onmouseover='showDropdown(1)' onmouseout='hideDropdown(1)')
+				a(href="/" class="white-text text-lighten-2") 
+					span ABOUT
+						.dropdowncontent
+							a(href='/about') 
+								span Our Chapter
+							a(href='/about/thetatau') 
+								span Theta Tau
+							a(href='/about/greeklife') 
+								span GreekLife
+			li(class='dropdown' onmouseover='showDropdown(2)' onmouseout='hideDropdown(2)')
 				a(href="/" class="white-text text-lighten-2") 
 					span EVENTS
+						.dropdowncontent
+							a(href='/events/brotherhood') 
+								span Brotherhood
+							a(href='/events/professional') 
+								span Professional
+							a(href='/events/service') 
+								span Service
+							a(href='/events/annual') 
+								span Annual
 			li
 				a(href="/" class="white-text text-lighten-2") 
 					span SPOTLIGHT

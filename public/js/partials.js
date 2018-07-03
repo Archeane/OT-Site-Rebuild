@@ -1,5 +1,34 @@
+/*
 var slideIndex = 1;
 showSlides(slideIndex);
+*/
+var dropdown = document.getElementsByClassName("dropdowncontent");
+$( document ).ready(function() {
+    console.log('hello');
+    console.log(dropdown);
+    for(i = 0; i < dropdown.length; i++){
+        dropdown[i].style.display = 'none';
+    }
+    /*
+    $('.dropdown').hover(function(){
+        console.log('entered');
+        dropdown[0].style.display = 'block'
+    }, function(){
+        console.log('lefted');
+        dropdown[0].style.display = 'none';
+    });
+    */
+});
+
+function showDropdown(n){
+    console.log('entered');
+    dropdown[n-1].style.display = 'block'
+}
+
+function hideDropdown(n){
+    console.log('lefted');
+    dropdown[n-1].style.display = 'none';
+}
 
 // Next/previous controls
 function plusSlides(n) {
@@ -27,12 +56,14 @@ function showSlides(n) {
     $('.slideimg').fadeIn();
     dots[slideIndex - 1].className += " active";
 
+    /*
     //check if text for slide exists
     if ($('#spotlight-text')) {
         changeSlideText(n, slides.length);
     }
+    */
 }
-
+/*
 function changeSlideText(n, slidesLength) {
     
     for (i = 1; i <= slidesLength; i++) {
@@ -42,3 +73,4 @@ function changeSlideText(n, slidesLength) {
     document.getElementById('spotlight-text-' + n.toString()).style.display = 'block';
 }
 
+*/
