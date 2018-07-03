@@ -33,6 +33,9 @@ app.get('/about', navbarController.getZetaEpsilon);
 app.get('/about/greeklife', navbarController.getGreeklife);
 app.get('/about/thetatau', navbarController.getThetaTau)
 app.get('/events/brotherhood', navbarController.getBrotherhood);
+app.get('/events/professional', navbarController.getProfessional);
+app.get('/events/service', navbarController.getService);
+app.get('/events/annual', navbarController.getAnnual);
 /**
  * Error Handler.
  */
