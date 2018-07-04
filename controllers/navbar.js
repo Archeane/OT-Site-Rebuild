@@ -47,7 +47,7 @@ exports.getAnnual = (req, res) =>{
 
 exports.getBrothers = (req, res) =>{
 	res.render('brothers',{
-		title:'Brothers', 'js':['brothers.js']
+		title:'Brothers', 'js':['brothers.js'], 'css':['brothers.css']
 	})
 }
 

@@ -2,7 +2,8 @@
   /**
    * Populate class dropdown menu
    */
-   var template = document.querySelector('.template');
+  var template = document.querySelector('.template');
+  var brotherdropdown = document.querySelector('#brotherdropdown');
 
   //find out what page we're on
   var className = window.location.search.split('=')[1];
@@ -21,6 +22,7 @@
       classElement.classList.add('selected');
       chosenClass = classesInfo[i];
     }
+    brotherdropdown.appendChild(classElement);
   }
 
   
@@ -29,7 +31,25 @@
    */
   var mainContainer = document.querySelector('#main');
   //all
+  var bannerHTML = '';
+  var bannerImageHTML = '';
   if(className === 'all'){
+    /**
+     * Banner HTML
+     */
+    bannerHTML += '<h1 class="header center white-text text-lighten-2">Brothers of Theta Tau</h1>';
+    bannerHTML += '\n<h5 class="header center col s12 light" text-shadow="2px 2px #ff0000">All Classes</h5>';
+    bannerImageHTML = '<img alt="Unsplashed background img 1" src="/media/brothers/zetaepsilon.jpg" style="display: block; transform: translate3d(-50%, 500px, 0px);">';
+    //todo(rohan) write code to display eboard & classes etc
+
+    /**
+     * Eboard HTML
+     */
+    mainContainer.innerHTML += '<br><div class="divider"></div><br>';
+    mainContainer.innerHTML += '<h4 id="eboard" class="blue-text text-lighten-2">Spring 2018 E-Board</h4>';
+    mainContainer.innerHTML += '<div class="row" id="eboardPrimary"></div>';
+    mainContainer.innerHTML += '<div class="row" id="eboardSecondary"></div>';
+
     //card html string
     var cardHTML ='';
     cardHTML += '<div class="card">';
@@ -42,6 +62,53 @@
     cardHTML += '</div>';
     cardHTML += '</div>';
 
+    var eboardPrimary = mainContainer.querySelector('#eboardPrimary');
+    eboardPrimary.innerHTML += '<div class="col s12 m6">' + cardHTML + '</div>';
+    eboardPrimary.innerHTML += '<div class="col s12 m6">' + cardHTML + '</div>';
+
+    var eboardSecondary = mainContainer.querySelector('#eboardSecondary');
+    eboardSecondary.innerHTML += '<div class="col s12 m4">' + cardHTML + '</div>';
+    eboardSecondary.innerHTML += '<div class="col s12 m4">' + cardHTML + '</div>';
+    eboardSecondary.innerHTML += '<div class="col s12 m4">' + cardHTML + '</div>';
+
+
+    var regentCard = eboardPrimary.children[0];
+    var viceCard = eboardPrimary.children[1];
+    var scribeCard = eboardSecondary.children[0];
+    var treasurerCard = eboardSecondary.children[1];
+    var corsecCard = eboardSecondary.children[2];
+    
+    var positions = {};
+
+    for(var i = 0; i < positionsInfo.length; ++i){
+      positions[positionsInfo[i].position] = brothersInfo[positionsInfo[i].brotherNum - 1];
+    }
+
+    //regentCard
+    regentCard.querySelector('img').src = '/media/brothers/' + ~~positions['Regent'].brotherNum + '.jpg';
+    regentCard.querySelector('span').innerHTML = '#' + ~~positions['Regent'].brotherNum + ' ' + positions['Regent'].firstName + ' ' + positions['Regent'].lastName;
+    regentCard.querySelector('b').innerHTML = 'Regent';
+
+    //viceCard
+    viceCard.querySelector('img').src = '/media/brothers/' + ~~positions['Vice Regent'].brotherNum + '.jpg';
+    viceCard.querySelector('span').innerHTML = '#' + ~~positions['Vice Regent'].brotherNum + ' ' + positions['Vice Regent'].firstName + ' ' + positions['Vice Regent'].lastName;
+    viceCard.querySelector('b').innerHTML = 'Vice Regent';
+
+    //scribeCard
+    scribeCard.querySelector('img').src = '/media/brothers/' + ~~positions['Scribe'].brotherNum + '.jpg';
+    scribeCard.querySelector('span').innerHTML = '#' + ~~positions['Scribe'].brotherNum + ' ' + positions['Scribe'].firstName + ' ' + positions['Scribe'].lastName;
+    scribeCard.querySelector('b').innerHTML = 'Scribe';
+
+    //treasurerCard
+    treasurerCard.querySelector('img').src = '/media/brothers/' + ~~positions['Treasurer'].brotherNum + '.jpg';
+    treasurerCard.querySelector('span').innerHTML = '#' + ~~positions['Treasurer'].brotherNum + ' ' + positions['Treasurer'].firstName + ' ' + positions['Treasurer'].lastName;
+    treasurerCard.querySelector('b').innerHTML = 'Treasurer';
+    
+    //corsecCard
+    corsecCard.querySelector('img').src = '/media/brothers/' + ~~positions['Corresponding Secretary'].brotherNum + '.jpg';
+    corsecCard.querySelector('span').innerHTML = '#' + ~~positions['Corresponding Secretary'].brotherNum + ' ' + positions['Corresponding Secretary'].firstName + ' ' + positions['Corresponding Secretary'].lastName;
+    corsecCard.querySelector('b').innerHTML = 'Corresponding Secretary';
+
     
     /**
      * Table of Contents
@@ -53,18 +120,35 @@
     section.innerHTML += '<h4 id="allClass" class="blue-text text-lighten-2">Classes</h4>';
 
     for(var i = 0; i < classesInfo.length; ++i){
-      var classCard = '';
+      var classCard = ''
+      classCard += '<div class="row">';
+      classCard += '<div class="nine columns pt2 pb2">'
+      classCard += '<h6 class="category">' + classesInfo[i]['className'] + '</h6>';
+      classCard += '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns" width="52px" height="2px" viewBox="0 0 52 2" version="1.1"> <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage"> <path d="M1.5,1 L50.3364601,1" id="Line" stroke="#E03B3B" stroke-width="2" stroke-linecap="square" sketch:type="MSShapeGroup"></path></g></svg>';
+      classCard += '</div>';
+      classCard += '</div>';
+
+      classCard += '<div class="row">';
+      classCard += '<div class="col s12 m9 l10">';
+      classCard += '<img class="materialboxed" src="/media/brothers/classes/' + classesInfo[i]["numericalClassNum"] + '.jpg" width="100%">';
+      classCard += '<div class="card-content">'
+      classCard += '<p><a href="/brothers?who=' + classesInfo[i]['className'] + '"><b>' + classesInfo[i]['className'] + ' Class</b></a></p>';
+      classCard += '</div>';
+      classCard += '</div>';
+      classCard += '</div>';
+/*
       classCard += '<div id="' + classesInfo[i]['className'] + '" class="row">';
       classCard += '<div class="col s12 m9 l10">';
       classCard += '<div class="card">';
       classCard += '<div class="card-image">';
-      classCard += '<img class="materialboxed" src="/media/class_imgs/' + classesInfo[i]["numericalClassNum"] + '.jpg" width="100%">';
+      classCard += '<img class="materialboxed" src="/media/brothers/classes/' + classesInfo[i]["numericalClassNum"] + '.jpg" width="100%">';
       classCard += '</div>';
       classCard += '<div class="card-content">';
       classCard += '<p><a href="/brothers?who=' + classesInfo[i]['className'] + '"><b>' + classesInfo[i]['className'] + ' Class</b></a></p>';
       classCard += '</div>';
       classCard += '</div>';
       classCard += '</div>';
+      */
       section.innerHTML += classCard;
     }
 
@@ -92,7 +176,7 @@
      */
     bannerHTML += '<h1 class="header center white-text text-lighten-2">' + chosenClass['className'] + ' Class </h1>';
     bannerHTML += '<h5 class="header center col s12 light">Crossed ' + chosenClass['crossSemester'] + ' \'' + chosenClass['crossYear'] + '</h5>';
-    bannerImageHTML = '<img alt="Unsplashed background img 1" src="/media/class_imgs/' + chosenClass['numericalClassNum'] + '.jpg" style="display: block; transform: translate3d(100%, 357px, 0px);">';
+    bannerImageHTML = '<img alt="Unsplashed background img 1" src="/media/brothers/' + chosenClass['numericalClassNum'] + '.jpg" style="display: block; transform: translate3d(100%, 357px, 0px);">';
 
     /**
      * Brother cards
@@ -104,10 +188,33 @@
       
       //create card HTML
       var cardHTML = '';
+      cardHTML += '<div class="row">';
+      cardHTML += '<div class="col s12 m4">';
+ //     cardHTML += '<div class="card-image waves-effect waves-block waves-light">'
+      cardHTML += '<img class="activator" src="/media/brothers/' + i + '.jpg" width="100%">';
+      cardHTML += '</div>';
+      cardHTML += '<div class="col s12 m4">';
+      cardHTML += '<span class="grey-text text-darken-4">';
+      cardHTML += '#' + i + ' ' + brother['firstName'] + ' ' + brother['lastName'] + '</span>';
+      cardHTML += '<p>' + brother['status'] + '</p>';
+      cardHTML += '<br><br>Major: ' + brother['major'];
+      cardHTML += '<br><br>Positions Held: ';
+      positionsHeld = brother['positionsHeld'];
+      for( l = 0; l < positionsHeld.length; l++ ) {
+          cardHTML += positionsHeld[l];
+          if( l + 1 != positionsHeld.length ) {
+              cardHTML += ', ';
+          }
+      }              
+      cardHTML += '</p></div></div>';
+      cards.push(cardHTML);
+
+
+      /*
       cardHTML += '<div class="col s12 m6">';
       cardHTML += '<div class="card">';
       cardHTML += '<div class="card-image waves-effect waves-block waves-light">'
-      cardHTML += '<img class="activator" src="/media/brother_imgs/' + i + '.jpg" width="100%">';
+      cardHTML += '<img class="activator" src="/media/brothers/' + i + '.jpg" width="100%">';
       cardHTML += '</div>';
       cardHTML += '<div class="card-content">';
       cardHTML += '<span class="card-title activator grey-text text-darken-4">';
@@ -125,8 +232,8 @@
       cardHTML += brother['status'];
       cardHTML += '<br><br>Major: ' + brother['major'];
       cardHTML += '<br><br>Positions Held: ';
-
-
+*/
+/*
       positionsHeld = brother['positionsHeld'];
       for( l = 0; l < positionsHeld.length; l++ ) {
           cardHTML += positionsHeld[l];
@@ -136,6 +243,7 @@
       }              
       cardHTML += '</p></div></div></div>';
       cards.push(cardHTML);
+      */
     }
 
     var rows = [];
@@ -152,6 +260,10 @@
 
     for(var i = 0; i < rows.length; ++i) main.appendChild(rows[i]);
   }
+  //inject banner
+  document.querySelector('#index-banner').querySelector('.container').innerHTML = bannerHTML;
+  //inject banner image
+  document.querySelector('.parallax').innerHTML = bannerImageHTML;
 })();
 
 
