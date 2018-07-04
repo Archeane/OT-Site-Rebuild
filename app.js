@@ -36,6 +36,7 @@ app.get('/events/brotherhood', navbarController.getBrotherhood);
 app.get('/events/professional', navbarController.getProfessional);
 app.get('/events/service', navbarController.getService);
 app.get('/events/annual', navbarController.getAnnual);
+app.get('/brothers', navbarController.getBrothers);
 /**
  * Error Handler.
  */

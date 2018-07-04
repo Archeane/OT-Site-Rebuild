@@ -45,4 +45,10 @@ exports.getAnnual = (req, res) =>{
 	})
 }
 
+exports.getBrothers = (req, res) =>{
+	res.render('brothers',{
+		title:'Brothers', 'js':['brothers.js']
+	})
+}
+
  	
