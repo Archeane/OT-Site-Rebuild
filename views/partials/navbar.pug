@@ -33,9 +33,12 @@ nav(class='bg-dark text-white' role='navigation')
 								span Service
 							a(href='/events/annual' style="text-decoration: none;") 
 								span Annual
-			li
+			li(class='dropdown' onmouseover='showDropdown(3)' onmouseout='hideDropdown(3)')
 				a(href="/#spotlight" class="white-text text-lighten-2" style="text-decoration: none;") 
 					span SPOTLIGHT
+						.dropdowncontent
+							a(href='/spotlight' style="text-decoration: none;") 
+								span All
 			li
 				a(href='/rush' class="white-text text-lighten-2" style="text-decoration: none;") 
 					span RUSH

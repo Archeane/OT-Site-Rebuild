@@ -5,7 +5,6 @@ $(document).ready(function(){
    */
   var template = document.querySelector('.template');
   var brotherdropdown = document.querySelector('#brotherdropdown');
-
   //find out what page we're on
   var className = window.location.search.split('=')[1];
   if(typeof className === 'undefined') className = 'all';
@@ -147,24 +146,8 @@ $(document).ready(function(){
       classCard += '<div class="row">';
       classCard += '<div class="col s12 m9 l10" id="'+classesInfo[i]['className'] +'">';
       classCard += '<a href="/brothers?who=' + classesInfo[i]['className'] + '"><img src="/media/brothers/classes/' + classesInfo[i]["numericalClassNum"] + '.jpg" width="100%" /></a>';
-      //classCard += '<div class="card-content">'
-      //classCard += '<p><a href="/brothers?who=' + classesInfo[i]['className'] + '"><b>' + classesInfo[i]['className'] + ' Class</b></a></p>';
-      //classCard += '</div>';
       classCard += '</div>';
       classCard += '</div>';
-/*
-      classCard += '<div id="' + classesInfo[i]['className'] + '" class="row">';
-      classCard += '<div class="col s12 m9 l10">';
-      classCard += '<div class="card">';
-      classCard += '<div class="card-image">';
-      classCard += '<img class="materialboxed" src="/media/brothers/classes/' + classesInfo[i]["numericalClassNum"] + '.jpg" width="100%">';
-      classCard += '</div>';
-      classCard += '<div class="card-content">';
-      classCard += '<p><a href="/brothers?who=' + classesInfo[i]['className'] + '"><b>' + classesInfo[i]['className'] + ' Class</b></a></p>';
-      classCard += '</div>';
-      classCard += '</div>';
-      classCard += '</div>';
-      */
       section.innerHTML += classCard;
     }
 
@@ -216,57 +199,9 @@ $(document).ready(function(){
       cardHTML += '</p></div></div>';
       cardHTML += '<br><div class="divider"></div><br>';
       cards.push(cardHTML);
-
-
-      /*
-      cardHTML += '<div class="col s12 m6">';
-      cardHTML += '<div class="card">';
-      cardHTML += '<div class="card-image waves-effect waves-block waves-light">'
-      cardHTML += '<img class="activator" src="/media/brothers/' + i + '.jpg" width="100%">';
-      cardHTML += '</div>';
-      cardHTML += '<div class="card-content">';
-      cardHTML += '<span class="card-title activator grey-text text-darken-4">';
-      cardHTML += '#' + i + ' ' + brother['firstName'] + ' ' + brother['lastName'];
-      cardHTML += '<i class="material-icons right">more_vert</i>';
-      cardHTML += '</span>';
-      cardHTML += '<p>' + brother['status'] + '</p>';
-      cardHTML += '</div>';
-      cardHTML += '<div class="card-reveal">';
-      cardHTML += '<span class="card-title grey-text text-darken-4">';
-      cardHTML += '#' + i + ' ' + brother['firstName'] + ' ' + brother['lastName'];
-      cardHTML += '<i class="material-icons right">close</i>';
-      cardHTML += '</span>';
-      cardHTML += '<p>';
-      cardHTML += brother['status'];
-      cardHTML += '<br><br>Major: ' + brother['major'];
-      cardHTML += '<br><br>Positions Held: ';
-*/
-/*
-      positionsHeld = brother['positionsHeld'];
-      for( l = 0; l < positionsHeld.length; l++ ) {
-          cardHTML += positionsHeld[l];
-          if( l + 1 != positionsHeld.length ) {
-              cardHTML += ', ';
-          }
-      }              
-      cardHTML += '</p></div></div></div>';
-      cards.push(cardHTML);
-      */
     }
 
-    var rows = [];
-    for(var i = 0; i < cards.length; ++i){
-      //ever 2 cards, make a new row
-      if(i%2 === 0){
-        var row = document.createElement('div');
-        row.classList.add('row');
-        rows.push(row);
-      }
-      //add card to last row
-      rows[rows.length - 1].innerHTML += cards[i];
-    }
-
-    for(var i = 0; i < rows.length; ++i) main.appendChild(rows[i]);
+  
   }
   //inject banner
   document.querySelector('#index-banner').querySelector('.container').innerHTML = bannerHTML;

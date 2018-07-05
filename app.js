@@ -38,6 +38,7 @@ app.get('/events/service', navbarController.getService);
 app.get('/events/annual', navbarController.getAnnual);
 app.get('/brothers', navbarController.getBrothers);
 app.get('/rush', navbarController.getRush);
+app.get('/spotlight', navbarController.getSpotlight);
 /**
  * Error Handler.
  */

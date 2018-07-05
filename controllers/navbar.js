@@ -57,4 +57,11 @@ exports.getRush = (req, res) =>{
 	})
 }
 
+exports.getSpotlight = (req, res) =>{
+	res.render('spotlight',{
+		title:'Spotlight', 'js':['spotlight.js'],'css':['partials.css']
+	})
+}
+
+
  	
