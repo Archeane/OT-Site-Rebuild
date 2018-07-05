@@ -126,7 +126,7 @@ $(document).ready(function(){
     tableOfContentsHTML += '<div style="height: 1px;">'
     tableOfContentsHTML += '<ul class="section table-of-contents">'
     for(var i = 0; i < classesInfo.length; ++i) {
-      tableOfContentsHTML += '<li><a href="#' + classesInfo[i]['className'] + '" class="">' + classesInfo[i]['className'] + '</a></li>';
+      tableOfContentsHTML += '<li><a href="#' + classesInfo[i]['className'] + '" style="text-decoration:none" class="">' + classesInfo[i]['className'] + '</a></li>';
     }
     tableOfContentsHTML += '</ul></div></div></div>';
     //founderRow.innerHTML += tableOfContentsHTML;
@@ -135,32 +135,11 @@ $(document).ready(function(){
 //------------------Classes Section----------------------
     var section = mainContainer.querySelector('#classSection');
 
-//    var founderRow = section.querySelector('#Founder');
-    //console.log(founderRow);
-    // /**
-    //  * table of contents
-    //  */
-
-/*
-    var tableOfContentsHTML = '';
-    tableOfContentsHTML += '<div class="col hide-on-small-only m3 l2">';
-    tableOfContentsHTML += '<div class="pin-top" style="top: 0px;">'
-    tableOfContentsHTML += '<div style="height: 1px;">'
-    tableOfContentsHTML += '<ul class="section table-of-contents">'
-    tableOfContentsHTML += '<li><a href="#eboard" class>E-Board</a></li>';
-    for(var i = 0; i < classesInfo.length; ++i) {
-      tableOfContentsHTML += '<li><a href="#' + classesInfo[i]['className'] + '" class="">' + i + ' Class</a></li>';
-    }
-    tableOfContentsHTML += '</ul></div></div></div>';
-    //founderRow.innerHTML += tableOfContentsHTML;
-    section.innerHTML += tableOfContentsHTML;
-*/
-
     for(var i = 0; i < classesInfo.length; ++i){
       var classCard = ''
       classCard += '<div class="row">';
       classCard += '<div class="nine columns pt2 pb2">'
-      classCard += '<h6 class="category">' + classesInfo[i]['className'] + '</h6>';
+      classCard += '<br><h6 class="category text-dark" >' + classesInfo[i]['className'] + '</h6>';
       classCard += '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns" width="52px" height="2px" viewBox="0 0 52 2" version="1.1"> <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage"> <path d="M1.5,1 L50.3364601,1" id="Line" stroke="#E03B3B" stroke-width="2" stroke-linecap="square" sketch:type="MSShapeGroup"></path></g></svg>';
       classCard += '</div>';
       classCard += '</div>';
