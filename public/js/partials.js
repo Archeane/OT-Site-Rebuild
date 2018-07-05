@@ -4,8 +4,6 @@ showSlides(slideIndex);
 */
 var dropdown = document.getElementsByClassName("dropdowncontent");
 $( document ).ready(function() {
-    console.log('hello');
-    console.log(dropdown);
     for(i = 0; i < dropdown.length; i++){
         dropdown[i].style.display = 'none';
     }

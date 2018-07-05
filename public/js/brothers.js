@@ -1,4 +1,5 @@
-(function(){
+var selectedClass=false;
+$(document).ready(function(){
   /**
    * Populate class dropdown menu
    */
@@ -34,6 +35,7 @@
   var bannerHTML = '';
   var bannerImageHTML = '';
   if(className === 'all'){
+    selectedClass=false;
     /**
      * Banner HTML
      */
@@ -42,13 +44,12 @@
     bannerImageHTML = '<img alt="Unsplashed background img 1" src="/media/brothers/zetaepsilon.jpg" style="display: block; transform: translate3d(-50%, 500px, 0px);">';
     //todo(rohan) write code to display eboard & classes etc
 
-    /**
-     * Eboard HTML
-     */
-    mainContainer.innerHTML += '<br><div class="divider"></div><br>';
-    mainContainer.innerHTML += '<h4 id="eboard" class="blue-text text-lighten-2">Spring 2018 E-Board</h4>';
-    mainContainer.innerHTML += '<div class="row" id="eboardPrimary"></div>';
-    mainContainer.innerHTML += '<div class="row" id="eboardSecondary"></div>';
+    //--------------------EBOARD------------------------
+    var eboard = mainContainer.querySelector('#eboard');
+    //mainContainer.innerHTML += '<br><div class="divider"></div><br>';
+    eboard.innerHTML += '<h4 id="eboard" class="text-lighten-2"> 2018-19 E-Board</h4>';
+    eboard.innerHTML += '<div class="row" id="eboardPrimary"></div>';
+    eboard.innerHTML += '<div class="row" id="eboardSecondary"></div>';
 
     //card html string
     var cardHTML ='';
@@ -109,15 +110,51 @@
     corsecCard.querySelector('span').innerHTML = '#' + ~~positions['Corresponding Secretary'].brotherNum + ' ' + positions['Corresponding Secretary'].firstName + ' ' + positions['Corresponding Secretary'].lastName;
     corsecCard.querySelector('b').innerHTML = 'Corresponding Secretary';
 
+    eboard.innerHTML += '<br><div class="divider"></div><br>';
+
+    mainContainer.innerHTML += eboard;
     
     /**
      * Table of Contents
      */
-    mainContainer.innerHTML += '<br><div class="divider"></div><br>';
-    mainContainer.innerHTML += '<div class="classSection"></div>';
 
-    var section = mainContainer.querySelector('.classSection');
-    section.innerHTML += '<h4 id="allClass" class="blue-text text-lighten-2">Classes</h4>';
+ //---------------SIDE NAVAGATION--------------------
+    var sideNav = mainContainer.querySelector('#nav');
+    var tableOfContentsHTML = '';
+    tableOfContentsHTML += '<div class="col hide-on-small-only m3 l2">';
+    tableOfContentsHTML += '<div class="pin-top" style="top: 0px;">'
+    tableOfContentsHTML += '<div style="height: 1px;">'
+    tableOfContentsHTML += '<ul class="section table-of-contents">'
+    for(var i = 0; i < classesInfo.length; ++i) {
+      tableOfContentsHTML += '<li><a href="#' + classesInfo[i]['className'] + '" class="">' + classesInfo[i]['className'] + '</a></li>';
+    }
+    tableOfContentsHTML += '</ul></div></div></div>';
+    //founderRow.innerHTML += tableOfContentsHTML;
+    sideNav.innerHTML += tableOfContentsHTML;
+
+//------------------Classes Section----------------------
+    var section = mainContainer.querySelector('#classSection');
+
+//    var founderRow = section.querySelector('#Founder');
+    //console.log(founderRow);
+    // /**
+    //  * table of contents
+    //  */
+
+/*
+    var tableOfContentsHTML = '';
+    tableOfContentsHTML += '<div class="col hide-on-small-only m3 l2">';
+    tableOfContentsHTML += '<div class="pin-top" style="top: 0px;">'
+    tableOfContentsHTML += '<div style="height: 1px;">'
+    tableOfContentsHTML += '<ul class="section table-of-contents">'
+    tableOfContentsHTML += '<li><a href="#eboard" class>E-Board</a></li>';
+    for(var i = 0; i < classesInfo.length; ++i) {
+      tableOfContentsHTML += '<li><a href="#' + classesInfo[i]['className'] + '" class="">' + i + ' Class</a></li>';
+    }
+    tableOfContentsHTML += '</ul></div></div></div>';
+    //founderRow.innerHTML += tableOfContentsHTML;
+    section.innerHTML += tableOfContentsHTML;
+*/
 
     for(var i = 0; i < classesInfo.length; ++i){
       var classCard = ''
@@ -129,11 +166,11 @@
       classCard += '</div>';
 
       classCard += '<div class="row">';
-      classCard += '<div class="col s12 m9 l10">';
-      classCard += '<img class="materialboxed" src="/media/brothers/classes/' + classesInfo[i]["numericalClassNum"] + '.jpg" width="100%">';
-      classCard += '<div class="card-content">'
-      classCard += '<p><a href="/brothers?who=' + classesInfo[i]['className'] + '"><b>' + classesInfo[i]['className'] + ' Class</b></a></p>';
-      classCard += '</div>';
+      classCard += '<div class="col s12 m9 l10" id="'+classesInfo[i]['className'] +'">';
+      classCard += '<a href="/brothers?who=' + classesInfo[i]['className'] + '"><img src="/media/brothers/classes/' + classesInfo[i]["numericalClassNum"] + '.jpg" width="100%" /></a>';
+      //classCard += '<div class="card-content">'
+      //classCard += '<p><a href="/brothers?who=' + classesInfo[i]['className'] + '"><b>' + classesInfo[i]['className'] + ' Class</b></a></p>';
+      //classCard += '</div>';
       classCard += '</div>';
       classCard += '</div>';
 /*
@@ -152,31 +189,16 @@
       section.innerHTML += classCard;
     }
 
-    var founderRow = section.querySelector('#Founder');
-    // /**
-    //  * table of contents
-    //  */
-
-    var tableOfContentsHTML = '';
-    tableOfContentsHTML += '<div class="col hide-on-small-only m3 l2">';
-    tableOfContentsHTML += '<div class="pin-top" style="top: 0px;">'
-    tableOfContentsHTML += '<div style="height: 1px;">'
-    tableOfContentsHTML += '<ul class="section table-of-contents">'
-    tableOfContentsHTML += '<li><a href="#eboard" class>E-Board</a></li>';
-    for(var i = 0; i < classesInfo.length; ++i) {
-      tableOfContentsHTML += '<li><a href="#' + classesInfo[i]['className'] + '" class="">' + classesInfo[i]['className'] + ' Class</a></li>';
-    }
-    tableOfContentsHTML += '</ul></div></div></div>';
-    founderRow.innerHTML += tableOfContentsHTML;
   }
   //specific class
   else{
+    selectedClass=true;
     /**
      * Banner HTML
      */
     bannerHTML += '<h1 class="header center white-text text-lighten-2">' + chosenClass['className'] + ' Class </h1>';
     bannerHTML += '<h5 class="header center col s12 light">Crossed ' + chosenClass['crossSemester'] + ' \'' + chosenClass['crossYear'] + '</h5>';
-    bannerImageHTML = '<img alt="Unsplashed background img 1" src="/media/brothers/' + chosenClass['numericalClassNum'] + '.jpg" style="display: block; transform: translate3d(100%, 357px, 0px);">';
+    bannerImageHTML = '<img alt="Unsplashed background img 1" src="/media/brothers/classes/' + chosenClass['numericalClassNum'] + '.jpg" style="display: block; transform: translate3d(100%, 357px, 0px);">';
 
     /**
      * Brother cards
@@ -189,16 +211,22 @@
       //create card HTML
       var cardHTML = '';
       cardHTML += '<div class="row">';
-      cardHTML += '<div class="col s12 m4">';
+      cardHTML += '<div class="col-md-1"></div>';
+      cardHTML += '<div class="col-md-4">';
  //     cardHTML += '<div class="card-image waves-effect waves-block waves-light">'
       cardHTML += '<img class="activator" src="/media/brothers/' + i + '.jpg" width="100%">';
       cardHTML += '</div>';
-      cardHTML += '<div class="col s12 m4">';
+      cardHTML += '<div class="col-md-1"></div>';
+      cardHTML += '<div class="col-md-2">';
       cardHTML += '<span class="grey-text text-darken-4">';
-      cardHTML += '#' + i + ' ' + brother['firstName'] + ' ' + brother['lastName'] + '</span>';
-      cardHTML += '<p>' + brother['status'] + '</p>';
-      cardHTML += '<br><br>Major: ' + brother['major'];
-      cardHTML += '<br><br>Positions Held: ';
+      cardHTML += '<br><b>#' + i + ' ' + brother['firstName'] + ' ' + brother['lastName'] + '</b></span>';
+      cardHTML += '<p>' + brother['status'] + '</p><br>';
+      cardHTML += '<a href='+brother['linkedin']+'><img src="/media/general/link.png" height=30 width=30 /></a>';
+      cardHTML += '</div>';
+      cardHTML += '<div class="col-md-3">';
+      cardHTML += '<br>Major: ' + brother['major'];
+      cardHTML += '<br><br>Company: ' + brother['company'];
+      cardHTML += '<br><br>Positions Held: <br>';
       positionsHeld = brother['positionsHeld'];
       for( l = 0; l < positionsHeld.length; l++ ) {
           cardHTML += positionsHeld[l];
@@ -264,7 +292,7 @@
   document.querySelector('#index-banner').querySelector('.container').innerHTML = bannerHTML;
   //inject banner image
   document.querySelector('.parallax').innerHTML = bannerImageHTML;
-})();
+});
 
 
 //todo(rohan) fix this...
@@ -274,10 +302,13 @@
 
     // todo(rohan) fix this timeout thing. Also doesnt need to run when not on all brothers page
     // Floating-Fixed table of contents for brothers page
+    if(!selectedClass){
     setTimeout(function() {
-     $('.table-of-contents').pushpin({top: $('#Founder').offset().top});
+      console.log($('#Founder').offset());
+     $('.table-of-contents').pushpin({top: $('#Founder').offset().top+20});
     },100);
-      
+  }
+    
     $('.button-collapse').sideNav();
     $('.parallax').parallax();
     $(".dropdown-button").dropdown();
@@ -285,3 +316,4 @@
       
   }); // end of document ready
 })(jQuery); // end of jQuery name space
+

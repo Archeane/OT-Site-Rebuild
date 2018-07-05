@@ -12,7 +12,6 @@
 $('#oncampus').hide();
 //show employer/campus
 function showEmployer(show) {
-    console.log(show);
     if (show == 'true') {
         $('#employers').show();
         $('#oncampus').hide();
@@ -24,7 +23,6 @@ function showEmployer(show) {
 
 
 function showMore(show) {
-    console.log(show);
     if (show == 'true') {
         $('#more').show();
     } else {
