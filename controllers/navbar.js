@@ -51,4 +51,10 @@ exports.getBrothers = (req, res) =>{
 	})
 }
 
+exports.getRush = (req, res) =>{
+	res.render('rush',{
+		title:'Rush', 'js':['rush.js'],'css':['partials.css']
+	})
+}
+
  	

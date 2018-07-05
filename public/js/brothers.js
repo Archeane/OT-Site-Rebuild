@@ -214,6 +214,7 @@ $(document).ready(function(){
           }
       }              
       cardHTML += '</p></div></div>';
+      cardHTML += '<br><div class="divider"></div><br>';
       cards.push(cardHTML);
 
 
